@@ -1,0 +1,8 @@
+﻿순위,명칭,열
+O(1),상수 시간(Constant time),좋음
+O(logN),로그 시간(Log time),
+O(N),선형 시간(Linear time),
+O(NlogN),로그선형시간,
+O(N$^2$),이차 시간,
+O(N$^3$),삼차 시간,
+O(2$^n$),지수 시간,나쁨
