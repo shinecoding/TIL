@@ -1,0 +1,4 @@
+﻿논리 연산자,설명
+X and Y,X와 Y가 모두 참(True)일 때 참(True)이다.
+X or Y,X와 Y중에 하나만 참(True)이어도 참(True)이다
+not X,X가 거짓(False)일 때 참(True)이다.
