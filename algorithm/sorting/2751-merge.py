@@ -1,31 +1,44 @@
-def merge_sort(array):
-    if len(array) > 1:
-        mid = len(array)//2
-        left, right = array[:mid], array[mid:]
-        merge_sort(left)
-        merge_sort(right)
+import sys
 
-        i, j, k = 0,0,0
 
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                array[k] = left[i]  #array.append(left[i])
-                i += 1
-            else:
-                array[k] = right[j]
-                j += 1
-            k += 1
-        #array맨뒷부분에 남은 가장 큰 수를 넣어준다! 만약 가장 큰 수가 left에 들어있다면 부등호식(left[]<right[])에서 i+=1 이 안 되서 left의 길이랑 일치하지 않았겠지
-        array[k:] = left[i:] if i != len(left) else right[j:]
-        #array += left[i:]
-        #array += right[j:]
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr)//2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    return merge(left, right)
+
+
+def merge(left, right):
+    array = []
+    left_index, right_index = 0, 0
+
+    while len(left) > left_index and len(right) > right_index:
+        if left[left_index] < right[right_index]:
+            array.append(left[left_index])  #array.append(left[i])
+            left_index += 1
+        else:
+            array.append(right[right_index])
+            right_index += 1
+
+    while len(left) > left_index:
+        array.append(left[left_index])
+        left_index += 1
+
+    while len(right) > right_index:
+        array.append(right[right_index])
+        right_index += 1
+
     return array
 
 
 mList = []
-n = int(input())
+
+n = int(sys.stdin.readline())
 for _ in range(n):
-    mList.append(int(input()))
+    mList.append(int(sys.stdin.readline()))
 
 res = merge_sort(mList)
 for a in res:
